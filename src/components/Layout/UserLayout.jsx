@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Common/header'
+import Header from '../Common/Header'
 
 const UserLayout = () => {
   return (
