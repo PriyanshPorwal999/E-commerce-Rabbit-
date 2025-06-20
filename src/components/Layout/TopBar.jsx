@@ -16,10 +16,7 @@ const TopBar = () => {
             <SlSocialInstagram className="h-5 w-5"/>
           </a>
           <a href="#" className="Hover: text-gray-300">
-           <SlSocialLinkedin className="h-5 w-5"/>
-          </a>
-          <a href="#" className="Hover: text-gray-300">
-           <BsTwitterX className="h-5 w-5"/>
+           <BsTwitterX className="h-4 w-4"/>
           </a>
           
           
