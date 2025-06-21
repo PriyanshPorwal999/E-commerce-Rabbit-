@@ -6,6 +6,8 @@ import {
   HiBars3BottomRight,
 } from "react-icons/hi2";
 
+import SearchBar from "./SearchBar";
+
 const NavBar = () => {
   return (
     <>
@@ -50,13 +52,18 @@ const NavBar = () => {
           <Link to="/profile" className="hover: text-gray-700">
             <HiOutlineUser className="h-6 w-6 text-gray-500" />
           </Link>
-            <button className="relative  hover: text-black">
+          <button className="relative  hover: text-black">
             <HiOutlineShoppingCart className="h-6 w-6 text-gray-500" />
-            <span className="absolute -top-1 bg-red-400 text-white text-xs rounded-full px-2 py-0.5">4</span>
+            <span className="absolute -top-1 bg-red-400 text-white text-xs rounded-full px-2 py-0.5">
+              4
+            </span>
           </button>
 
           {/* Search Button */}
-
+          <div className="overflow-hidden">
+            <SearchBar />
+          </div>
+          
 
           {/* Hamburger buttton */}
           <button className="md:hidden">
