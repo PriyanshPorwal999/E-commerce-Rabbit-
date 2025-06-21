@@ -4,10 +4,12 @@ import NavBar from './Navbar'
 
 const Header = () => {
   return (
-    <div>
+    <header className='border-b border-gray-200'>
+      {/* Top Bar */}
       <TopBar />
+      {/* Nav Bar */}
       <NavBar />
-    </div>
+    </header>
   )
 }
 
