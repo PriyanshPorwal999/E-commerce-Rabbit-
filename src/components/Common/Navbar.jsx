@@ -7,8 +7,16 @@ import {
 } from "react-icons/hi2";
 
 import SearchBar from "./SearchBar";
+import CartDrawer from "../Layout/CartDrawer";
+import { useState } from "react";
 
 const NavBar = () => {
+  const [DrawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleCartDrawer = () => {
+    setDrawerOpen(!DrawerOpen);
+  };
+
   return (
     <>
       <nav className="container mx-auto flex justify-between items-center py-4 px-4">
@@ -52,7 +60,7 @@ const NavBar = () => {
           <Link to="/profile" className="hover: text-gray-700">
             <HiOutlineUser className="h-6 w-6 text-gray-500" />
           </Link>
-          <button className="relative  hover: text-black">
+          <button onClick={toggleCartDrawer} className="relative  hover: text-black">
             <HiOutlineShoppingCart className="h-6 w-6 text-gray-500" />
             <span className="absolute -top-1 bg-red-400 text-white text-xs rounded-full px-2 py-0.5">
               4
@@ -63,7 +71,6 @@ const NavBar = () => {
           <div className="overflow-hidden">
             <SearchBar />
           </div>
-          
 
           {/* Hamburger buttton */}
           <button className="md:hidden">
@@ -71,6 +78,7 @@ const NavBar = () => {
           </button>
         </div>
       </nav>
+      <CartDrawer DrawerOpen = {DrawerOpen} toggleCartDrawer={toggleCartDrawer}/>
     </>
   );
 };
