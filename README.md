@@ -20,3 +20,5 @@ A fully functional e-commerce website using the MERN stack (MongoDB, Express, Re
 - Open new terminal and navigate to the frontend folder - cd frontend
 - run command - npm install
 - finally run command - npm run dev (to start the frontend react app)
+
+# Methodology 
