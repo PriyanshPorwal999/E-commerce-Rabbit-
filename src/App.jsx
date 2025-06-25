@@ -1,27 +1,21 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route, Link } from "react-router"
-import UserLayout from './components/Layout/UserLayout'
+import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router";
+import UserLayout from "./components/Layout/UserLayout";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
     <BrowserRouter>
-     <Routes>
-      <Route path="/" element={<UserLayout/>}></Route>
-      <Route path="/home" element={<UserLayout/>}></Route>
-     </Routes>
+      <Routes>
+        <Route path="/" element={<UserLayout />}>
+          <Route index element={<Home />}></Route>
+        </Route>
+      </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
-
-
-
-
-
-
-
-
+export default App;
 
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
