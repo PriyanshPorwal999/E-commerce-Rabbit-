@@ -54,7 +54,7 @@ const CartContents = () => {
           <div>
             <p> ${product.price.toLocaleString()}</p>
             <button>
-              <RiDeleteBin3Line clasName="h-6 w-6 mt-2"></RiDeleteBin3Line>
+              <RiDeleteBin3Line className="h-6 w-6 mt-2"></RiDeleteBin3Line>
             </button>
           </div>
         </div>
