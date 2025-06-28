@@ -23,6 +23,7 @@ const NewArrivals = () => {
   //    Useful for showing/hiding right arrow or disabling scrolling when at the end.
   const [canScrollRight, setCanScrollRight] = useState(true);
 
+  // State to control visibility/enabled status of left scroll button
   const [canScrollLeft, setCanScrollLeft] = useState(false);
 
   const newArrivals = [
@@ -116,29 +117,34 @@ const NewArrivals = () => {
     },
   ];
 
+    // Triggered when the user presses mouse down inside scrollable container
   const handleMouseDown = (e) => {
     setIsDragging(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
   }
 
+   // Triggered as the user moves the mouse while dragging
   const handleMouseMove = (e) => {
     if(!isDragging) return;
     const x =e.pageX - scrollRef.current.offsetLeft;
-    const walk = x -startX;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
+    const walk = x -startX; // Distance dragged
+    scrollRef.current.scrollLeft = scrollLeft - walk; // Perform scrolling
   }
 
+    // Triggered when user releases mouse or leaves container area
   const handleMouseUpOrLeave = () => {
     setIsDragging(false);
 
   }
 
+    // Programmatic scroll using button click (left/right)
   const scroll = (direction) => {
     const scrollAmount = direction === "left" ? -300 : 300;
     scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
+    // Calculates whether scroll buttons should be enabled or disabled
   // Update Scroll Buttons
   const updateScrollButtons = () => {
     const container = scrollRef.current;
@@ -169,6 +175,8 @@ const NewArrivals = () => {
     // console.log(rightScrollable);
   };
 
+
+  // Set up scroll event listener on mount, clean up on unmount
   useEffect(() => {
     const container = scrollRef.current;
     if (container) {
@@ -233,7 +241,7 @@ const NewArrivals = () => {
               src={product.images[0]?.url}
               alt={product.images[0]?.altText || product.name}
               className="w-full h-[500px] object-cover rounded-lg"
-              // draggable="false"
+              draggable="false"
             ></img>
             <div className="absolute bottom-0 left-0 right-0 bg-yellow-300/2 backdrop-blur-md text-white p-4 rounded-b-lg">
               <Link to={`/products/${product._id}`} className="block">
