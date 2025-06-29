@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const selectedProduct = {
   name: "Stylish Jacket",
@@ -22,6 +23,38 @@ const selectedProduct = {
 };
 
 const ProductDetails = () => {
+  const [mainImage, setMainImage] = useState("");
+
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+  const [quantity, setquantity] = useState(1);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    if (selectedProduct?.images?.length > 0) {
+      setMainImage(selectedProduct.images[0].url);
+    }
+  }, [selectedProduct]);
+
+  const handleQunatityChange = (action) => {
+    if (action === "plus") setquantity((prev) => prev + 1);
+    if (action === "minus" && quantity > 1) setquantity((prev) => prev - 1);
+  };
+
+  const handleAddToCart = () => {
+    if (!selectedSize || !selectedColor) {
+      toast.error("Please select a size and color before adding to cart.", {duration: 1000,});
+      return;
+    }
+
+    setIsButtonDisabled(true);
+
+    setTimeout(() => {
+      toast.success("Product added to cart", {duration: 1000,})
+      setIsButtonDisabled(false);
+    }, 500);
+  };
+
   return (
     <div className="p-6 bg-amber-300">
       <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg">
@@ -34,7 +67,10 @@ const ProductDetails = () => {
                   key={index}
                   src={image.url}
                   alt={image.altText || `Thumbnail ${index}`}
-                  className="w-20 h-20 object-cover rounded-lg cursor-pointer border"
+                  className={`w-20 h-20 object-cover rounded-lg cursor-pointer border ${
+                    mainImage === image.url ? "border-black" : "border-gray-300"
+                  }`}
+                  onClick={() => setMainImage(image.url)}
                 />
               );
             })}
@@ -44,7 +80,7 @@ const ProductDetails = () => {
           <div className="md:w-1/2">
             <div className="mb-4">
               <img
-                src={selectedProduct.images[0]?.url}
+                src={mainImage}
                 alt="Main Product"
                 className="w-full h-auto object-cover rounded-lg"
               ></img>
@@ -59,7 +95,10 @@ const ProductDetails = () => {
                   key={index}
                   src={image.url}
                   alt={image.altText || `Thumbnail ${index}`}
-                  className="w-20 h-20 object-cover rounded-lg cursor-pointer border"
+                  className={`w-20 h-20 object-cover rounded-lg cursor-pointer border ${
+                    mainImage === image.url ? "border-black" : "border-gray-300"
+                  }`}
+                  onClick={() => setMainImage(image.url)}
                 />
               );
             })}
@@ -87,7 +126,12 @@ const ProductDetails = () => {
                 {selectedProduct.colors.map((color) => (
                   <button
                     key={color}
-                    className="w-8 h-8 rounded-full border"
+                    onClick={() => setSelectedColor(color)}
+                    className={`w-8 h-8 rounded-full border ${
+                      selectedColor === color
+                        ? "border=-4 border-black"
+                        : "border-gray-300"
+                    }`}
                     style={{
                       backgroundColor: color.toLocaleLowerCase(),
                       filter: "brightness(0.5)",
@@ -101,7 +145,13 @@ const ProductDetails = () => {
               <p className="text-gray-700"></p>
               <div className="flex gap-2 mt-2">
                 {selectedProduct.sizes.map((size) => (
-                  <button key={size} className="px-4 py-2 rounded border">
+                  <button
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`px-4 py-2 rounded border ${
+                      selectedSize === size ? "bg-black text-white" : ""
+                    }`}
+                  >
                     {size}
                   </button>
                 ))}
@@ -111,18 +161,28 @@ const ProductDetails = () => {
             <div className="mb-6">
               <p className="text-gray-700">Quantity:</p>
               <div className="flex items-center space-x-4 mt-2">
-                <button className="px-2 py-1 bg-gray-200 rounded text-lg">
+                <button
+                  onClick={() => handleQunatityChange("minus")}
+                  className="px-2 py-1 bg-gray-200 rounded text-lg"
+                >
                   -
                 </button>
-                <span className="text-lg ">1</span>
-                <button className="px-2 py-1 bg-gray-200 rounded text-lg">
+                <span className="text-lg ">{quantity}</span>
+                <button
+                  onClick={() => handleQunatityChange("plus")}
+                  className="px-2 py-1 bg-gray-200 rounded text-lg"
+                >
                   +
                 </button>
               </div>
             </div>
 
-            <button className="bg-black text-white py-2 px-6 rounded w-full mb-4">
-              ADD TO CART
+            <button
+              onClick={handleAddToCart}
+              disabled={isButtonDisabled}
+              className= {`bg-black text-white py-2 px-6 rounded w-full mb-4 ${isButtonDisabled ? "cursor-not-allowed opacity-50" : "hover:bg-gray-900"}`}
+            >
+              {isButtonDisabled ? "Adding..." : "ADD TO CART"}
             </button>
 
             <div className="mt-10 text-gray-700">
