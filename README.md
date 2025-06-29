@@ -22,3 +22,6 @@ A fully functional e-commerce website using the MERN stack (MongoDB, Express, Re
 - finally run command - npm run dev (to start the frontend react app)
 
 # Methodology 
+
+use Sooner Library for notification purpose (Sonner is an opinionated toast component for React.)
+
