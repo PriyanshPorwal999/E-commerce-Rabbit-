@@ -157,14 +157,14 @@ const NewArrivals = () => {
       setCanScrollLeft(leftScroll > 0);
       setCanScrollRight(rightScrollable > 0);
 
-      console.log({
-        scrollLeft: container.scrollLeft,
-        clientWidth: container.clientWidth,
-        containerScrollWidth: container.scrollWidth,
-        offsetLeft: scrollRef.current.offsetLeft,
-      });
+      // console.log({
+      //   scrollLeft: container.scrollLeft,
+      //   clientWidth: container.clientWidth,
+      //   containerScrollWidth: container.scrollWidth,
+      //   offsetLeft: scrollRef.current.offsetLeft,
+      // });
 
-      console.log(rightScrollable);
+      // console.log(rightScrollable);
     }
     // console.log({
     //   scrollLeft: container.scrollLeft,
