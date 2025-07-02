@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route, Link } from "react-router";
 import UserLayout from "./components/Layout/UserLayout";
 import Home from "./pages/Home";
 import { Toaster, toast } from "sonner";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 
 const App = () => {
   return (
@@ -11,6 +14,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<UserLayout />}>
           <Route index element={<Home />}></Route>
+          <Route path="login" element={<Login />}></Route>
+          {/* <Route path="register" element={<Register />}></Route>  */}
         </Route>
       </Routes>
     </BrowserRouter>
