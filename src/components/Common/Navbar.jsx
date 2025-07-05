@@ -33,10 +33,10 @@ const NavBar = () => {
           </Link>
         </div>
 
-        {/* Options */}
+        {/* Options pr Center Navigation Links */}
         <div className="hidden md:flex space-x-6">
           <Link
-            to="#"
+            to="/collections/all"
             className="text-black  hover:text-gray-500 text-sm font-medium uppercase"
           >
             Men
