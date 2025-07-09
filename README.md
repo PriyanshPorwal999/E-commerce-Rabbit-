@@ -25,3 +25,11 @@ A fully functional e-commerce website using the MERN stack (MongoDB, Express, Re
 
 use Sooner Library for notification purpose (Sonner is an opinionated toast component for React.)
 
+
+
+# Learnings 
+1. State Management 
+2. Routing(Frontend)
+3. React Hooks(useState, useEffect, useRef, useNavigate)
+4. Responsive UI Design
+5. Version Control with Git
