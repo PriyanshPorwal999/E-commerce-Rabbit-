@@ -40,6 +40,7 @@ const MyOrdersPage = () => {
     }, 1000);
   }, []);
 
+  // Navigate to order Deatils page on click
   const handleRowClick = (orderId) => {
     navigate(`/order/${orderId}`);
   };
