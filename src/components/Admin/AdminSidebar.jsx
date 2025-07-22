@@ -35,7 +35,7 @@ const AdminSidebar = ({setIsSidebarOpen}) => {
           <span>Users</span>
         </NavLink>
         <NavLink
-          to="/admin/users"
+          to="/admin/products"
           onClick={() => setIsSidebarOpen(false)} // This closes sidebar on mobile
           className={({ isActive }) =>
             isActive
