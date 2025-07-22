@@ -34,7 +34,7 @@ const AdminLayout = () => {
         } transition-transform-300 md:translate-x-0 md:static md:block z-20`}
       >
         {/* Sidebar */}
-        <AdminSidebar />
+        <AdminSidebar setIsSidebarOpen={setisSidebarOpen}/>
       </div>
 
       {/* Main Content */}
