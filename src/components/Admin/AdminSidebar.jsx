@@ -8,7 +8,7 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 
-const AdminSidebar = () => {
+const AdminSidebar = ({setIsSidebarOpen}) => {
   const navigate = useNavigate();
   const handleLogout = () => {
     navigate("/");
@@ -24,6 +24,7 @@ const AdminSidebar = () => {
       <nav className="flex flex-col spacr-y-2">
         <NavLink
           to="/admin/users"
+          onClick={() => setIsSidebarOpen(false)} // This closes sidebar on mobile
           className={({ isActive }) =>
             isActive
               ? "bg-gray-700 text-white py-3 px-4 roundfed flex items-center space-x-2"
@@ -35,6 +36,7 @@ const AdminSidebar = () => {
         </NavLink>
         <NavLink
           to="/admin/users"
+          onClick={() => setIsSidebarOpen(false)} // This closes sidebar on mobile
           className={({ isActive }) =>
             isActive
               ? "bg-gray-700 text-white py-3 px-4 roundfed flex items-center space-x-2"
@@ -46,6 +48,7 @@ const AdminSidebar = () => {
         </NavLink>
         <NavLink
           to="/admin/users"
+          onClick={() => setIsSidebarOpen(false)} // This closes sidebar on mobile
           className={({ isActive }) =>
             isActive
               ? "bg-gray-700 text-white py-3 px-4 roundfed flex items-center space-x-2"
