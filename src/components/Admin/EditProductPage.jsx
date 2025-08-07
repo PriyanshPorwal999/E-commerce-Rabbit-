@@ -1,4 +1,4 @@
-// This is Product Management Page File
+// This is Edit - Product Management Page File
 
 import React, { useState } from "react";
 
